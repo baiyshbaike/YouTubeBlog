@@ -21,6 +21,26 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\images\\article-images\\adwadw_308.jpg",
+      "PackagePath": "staticwebassets\\images\\article-images\\adwadw_308.jpg"
+    },
+    {
+      "Id": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\images\\article-images\\asdfasdf_191.jpg",
+      "PackagePath": "staticwebassets\\images\\article-images\\asdfasdf_191.jpg"
+    },
+    {
+      "Id": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\images\\article-images\\fastfood_873.png",
+      "PackagePath": "staticwebassets\\images\\article-images\\fastfood_873.png"
+    },
+    {
+      "Id": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\images\\article-images\\qweqwe_412.jpg",
+      "PackagePath": "staticwebassets\\images\\article-images\\qweqwe_412.jpg"
+    },
+    {
+      "Id": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\images\\article-images\\qwweqe_567.jpg",
+      "PackagePath": "staticwebassets\\images\\article-images\\qwweqe_567.jpg"
+    },
+    {
       "Id": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\js\\articleindex.js",
       "PackagePath": "staticwebassets\\js\\articleindex.js"
     },

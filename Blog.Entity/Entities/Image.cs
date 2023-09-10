@@ -15,10 +15,12 @@ namespace Blog.Entity.Entities
             
         }
 
-        public Image(string fileName,string fileType)
+        public Image(string fileName,string fileType, string createdBy)
         {
+            
+            CreatedBy = createdBy;
+            FileType = fileType;
             FileName = fileName;
-            fileType = fileType;
         }
         public string FileName { get; set; }
         public string FileType { get; set; }
