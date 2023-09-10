@@ -21,8 +21,8 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\images\\article-images\\adwadw_308.jpg",
-      "PackagePath": "staticwebassets\\images\\article-images\\adwadw_308.jpg"
+      "Id": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\images\\article-images\\adwadw_918.jpg",
+      "PackagePath": "staticwebassets\\images\\article-images\\adwadw_918.jpg"
     },
     {
       "Id": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\images\\article-images\\asdfasdf_191.jpg",
@@ -43,6 +43,10 @@
     {
       "Id": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\js\\articleindex.js",
       "PackagePath": "staticwebassets\\js\\articleindex.js"
+    },
+    {
+      "Id": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\js\\categoryindex.js",
+      "PackagePath": "staticwebassets\\js\\categoryindex.js"
     },
     {
       "Id": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\js\\site.js",

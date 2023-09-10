@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "r4ywRcSsRGmQkUh1A3nmy1jjaMuawijTsHrxXHAx/hI=",
+  "Hash": "lIze08TapgembolDSBuJy4CrCh9GjKMOwQ6DSqk7T0w=",
   "Source": "Blog.Web",
   "BasePath": "_content/Blog.Web",
   "Mode": "Default",
@@ -153,12 +153,12 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\images\\article-images\\adwadw_308.jpg",
+      "Identity": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\images\\article-images\\adwadw_918.jpg",
       "SourceId": "Blog.Web",
       "SourceType": "Discovered",
       "ContentRoot": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\",
       "BasePath": "_content/Blog.Web",
-      "RelativePath": "images/article-images/adwadw_308.jpg",
+      "RelativePath": "images/article-images/adwadw_918.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -167,7 +167,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\article-images\\adwadw_308.jpg"
+      "OriginalItemSpec": "wwwroot\\images\\article-images\\adwadw_918.jpg"
     },
     {
       "Identity": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\images\\article-images\\asdfasdf_191.jpg",
@@ -253,6 +253,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\articleindex.js"
+    },
+    {
+      "Identity": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\js\\categoryindex.js",
+      "SourceId": "Blog.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\",
+      "BasePath": "_content/Blog.Web",
+      "RelativePath": "js/categoryindex.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\categoryindex.js"
     },
     {
       "Identity": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\js\\site.js",
