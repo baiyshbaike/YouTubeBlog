@@ -6,4 +6,7 @@ public interface ICategoryService
 { 
     Task<List<CategoryDto>> GetAllCategoriesNonDeleted();
     Task CreateCategoryAsync(CategoryAddDto categoryAddDto);
+    Task<CategoryDto> GetCategoryNonDeletedAsync(Guid categoryId);
+    Task<string> UpdateCategoryeAsync(CategoryUpdateDto categoryUpdateDto);
+    Task<string> SafeDeleteCategoryAsync(Guid categoryId);
 }

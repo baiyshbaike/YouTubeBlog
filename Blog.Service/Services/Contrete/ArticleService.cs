@@ -77,8 +77,8 @@ namespace Blog.Service.Services.Contrete
             article.Title = articleUpdateDto.Title;
             article.Content = articleUpdateDto.Content;
             article.CategoryId = articleUpdateDto.CategoryId;
-            article.DeletedDate = DateTime.Now;
-            article.CreatedBy = userEmail;
+            article.ModifiedDate = DateTime.Now;
+            article.ModifiedBy = userEmail;
             await _unitOfWork.GetRepository<Article>().UpdateAsunc(article);
             await _unitOfWork.SaveAsync();
             return article.Title;

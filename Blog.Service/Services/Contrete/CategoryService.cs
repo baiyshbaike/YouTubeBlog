@@ -37,4 +37,34 @@ public class CategoryService : ICategoryService
         await _unitOfWork.GetRepository<Category>().AddAsync(category);
         await _unitOfWork.SaveAsync();
     }
+    public async Task<CategoryDto> GetCategoryNonDeletedAsync(Guid categoryId)
+    {
+        var category = await _unitOfWork.GetRepository<Category>()
+            .GetAsync(x => !x.IsDeleted && x.Id == categoryId);
+        var map = _mapper.Map<CategoryDto>(category);
+        return map;
+    }
+    public async Task<string> UpdateCategoryeAsync(CategoryUpdateDto categoryUpdateDto)
+    {
+        var userEmail = _user.GetLoggedInEmail();
+        var category = await _unitOfWork.GetRepository<Category>()
+            .GetAsync(x => !x.IsDeleted && x.Id == categoryUpdateDto.Id);
+        category.Name = categoryUpdateDto.Name;
+        category.ModifiedBy = _user.GetLoggedInEmail();
+        category.ModifiedDate = DateTime.Now;
+        await _unitOfWork.GetRepository<Category>().UpdateAsunc(category);
+        await _unitOfWork.SaveAsync();
+        return category.Name;
+    }
+    public async Task<string> SafeDeleteCategoryAsync(Guid categoryId)
+    {
+        var userEmail = _user.GetLoggedInEmail();
+        var category = await _unitOfWork.GetRepository<Category>().GetByGuidAsync(categoryId);
+        category.IsDeleted = true;
+        category.DeletedDate = DateTime.Now;
+        category.DeletedBy = userEmail;
+        await _unitOfWork.GetRepository<Category>().UpdateAsunc(category);
+        await _unitOfWork.SaveAsync();
+        return category.Name;
+    }
 }

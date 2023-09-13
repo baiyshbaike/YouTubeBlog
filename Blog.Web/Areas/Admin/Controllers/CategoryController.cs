@@ -16,7 +16,7 @@ namespace Blog.Web.Areas.Admin.Controllers
     [Area("admin")]
     public class CategoryController : Controller
     {
-        private readonly ICategoryService categoryService;
+        private readonly ICategoryService _categoryService;
 
         public IValidator<Category> _validator;
         public IMapper _mapper;
@@ -24,14 +24,14 @@ namespace Blog.Web.Areas.Admin.Controllers
 
         public CategoryController(ICategoryService categoryService, IValidator<Category> validator, IMapper mapper,IToastNotification toastNotification)
         {
-            this.categoryService = categoryService;
+            _categoryService = categoryService;
             _validator = validator;
             _mapper = mapper;
             _toastNotification = toastNotification;
         }
         public async  Task<IActionResult> Index()
         {
-            var categories = await categoryService.GetAllCategoriesNonDeleted();
+            var categories = await _categoryService.GetAllCategoriesNonDeleted();
             return View(categories);
         }
         [HttpGet]
@@ -46,12 +46,44 @@ namespace Blog.Web.Areas.Admin.Controllers
             var result = await _validator.ValidateAsync(map);
             if(result.IsValid)
             {
-                await categoryService.CreateCategoryAsync(categoryAddDto);
+                await _categoryService.CreateCategoryAsync(categoryAddDto);
                 _toastNotification.AddSuccessToastMessage(Messages.Category.Add(categoryAddDto.Name), new ToastrOptions() { Title = "successful!" });
                 return RedirectToAction("Index", "Category", new { Area = "Admin" });
             }
             result.AddToModelState(this.ModelState);
             return View();
+        }
+        [HttpGet]
+        public async Task<IActionResult> Update(Guid categoryId)
+        {
+            var category = await _categoryService.GetCategoryNonDeletedAsync(categoryId);
+            var categoryUpdateDto = _mapper.Map<CategoryUpdateDto>(category);
+            return View(categoryUpdateDto);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(CategoryUpdateDto categoryUpdateDto)
+        {
+            var map = _mapper.Map<Category>(categoryUpdateDto);
+            var result = await _validator.ValidateAsync(map);
+            if (result.IsValid)
+            {
+                var message = await _categoryService.UpdateCategoryeAsync(categoryUpdateDto);
+                _toastNotification.AddSuccessToastMessage(Messages.Category.Udpate(message), new ToastrOptions() { Title = "successful!" });
+                return RedirectToAction("Index", "Category", new { Area = "Admin" });
+            }
+            else
+            {
+                result.AddToModelState(ModelState);
+            }
+            return View(categoryUpdateDto);
+        }
+
+        public async Task<IActionResult> Delete(Guid categoryId)
+        {
+            var title = await _categoryService.SafeDeleteCategoryAsync(categoryId);
+            _toastNotification.AddSuccessToastMessage(Messages.Article.Delete(title), new ToastrOptions() { Title = "seccessful!" });
+            return RedirectToAction("Index", "Category", new { Area = "Admin" });
         }
     }
 }

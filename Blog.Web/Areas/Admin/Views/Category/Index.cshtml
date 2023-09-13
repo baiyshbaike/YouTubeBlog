@@ -28,16 +28,16 @@
                     </tr>
                 </tfoot>
                 <tbody class="table-border-bottom-0">
-                    @foreach (var cateogry in Model)
+                    @foreach (var category in Model)
                     {
-                        <tr name="@cateogry.Id">
-                            <td>@cateogry.Name</td>
-                            <td>@cateogry.CreatedDate.ToShortDateString()</td>
-                            <td>@cateogry.CreatedBy</td>
-                            <td>@(cateogry.IsDeleted ? "Not Active" : "Active")</td>
+                        <tr name="@category.Id">
+                            <td>@category.Name</td>
+                            <td>@category.CreatedDate.ToShortDateString()</td>
+                            <td>@category.CreatedBy</td>
+                            <td>@(category.IsDeleted ? "Not Active" : "Active")</td>
                             <td>
-                                <a asp-area="Admin" asp-controller="Category" asp-action="Update" data-id="@cateogry.Id" asp-route-cateogryId="@cateogry.Id" class="btn btn-primary btn-sm"><i class="bx bxs-edit"></i></a>
-                                <a asp-area="Admin" asp-controller="Category" asp-action="Delete" data-id="@cateogry.Id" asp-route-cateogryId="@cateogry.Id" class="btn btn-danger btn-sm"><i class="bx bx-minus-circle"></i></a>
+                                <a asp-area="Admin" asp-controller="Category" asp-action="Update" data-id="@category.Id" asp-route-categoryId="@category.Id" class="btn btn-primary btn-sm"><i class="bx bxs-edit"></i></a>
+                                <a asp-area="Admin" asp-controller="Category" asp-action="Delete" data-id="@category.Id" asp-route-categoryId="@category.Id" class="btn btn-danger btn-sm"><i class="bx bx-minus-circle"></i></a>
                             </td>
                         </tr>
                     }
