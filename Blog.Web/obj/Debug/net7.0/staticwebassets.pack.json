@@ -45,6 +45,10 @@
       "PackagePath": "staticwebassets\\js\\articleindex.js"
     },
     {
+      "Id": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\js\\categoryAdd.js",
+      "PackagePath": "staticwebassets\\js\\categoryAdd.js"
+    },
+    {
       "Id": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\js\\categoryindex.js",
       "PackagePath": "staticwebassets\\js\\categoryindex.js"
     },

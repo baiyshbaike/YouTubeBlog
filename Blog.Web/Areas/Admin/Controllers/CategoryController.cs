@@ -53,6 +53,22 @@ namespace Blog.Web.Areas.Admin.Controllers
             result.AddToModelState(this.ModelState);
             return View();
         }
+        [HttpPost]
+        public async Task<IActionResult> AddWithAjax([FromBody] CategoryAddDto categoryAddDto)
+        {
+            var map = _mapper.Map<Category>(categoryAddDto);
+            var result = await _validator.ValidateAsync(map);
+            if (result.IsValid)
+            {
+                await _categoryService.CreateCategoryAsync(categoryAddDto);
+                _toastNotification.AddSuccessToastMessage(Messages.Category.Add(categoryAddDto.Name), new ToastrOptions() { Title = "successful!" });
+                return Json(Messages.Category.Add(categoryAddDto.Name));
+            }
+            else { 
+            _toastNotification.AddErrorToastMessage(result.Errors.First().ErrorMessage, new ToastrOptions() { Title = "filed" });
+            return Json(result.Errors.First().ErrorMessage);
+        }
+        }
         [HttpGet]
         public async Task<IActionResult> Update(Guid categoryId)
         {

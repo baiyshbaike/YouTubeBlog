@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "lIze08TapgembolDSBuJy4CrCh9GjKMOwQ6DSqk7T0w=",
+  "Hash": "Lwep6QAQPGGP5QMU2zG4+lTteTcxB89U5vdx9kv9jao=",
   "Source": "Blog.Web",
   "BasePath": "_content/Blog.Web",
   "Mode": "Default",
@@ -253,6 +253,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\articleindex.js"
+    },
+    {
+      "Identity": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\js\\categoryAdd.js",
+      "SourceId": "Blog.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\",
+      "BasePath": "_content/Blog.Web",
+      "RelativePath": "js/categoryAdd.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\categoryAdd.js"
     },
     {
       "Identity": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\js\\categoryindex.js",
