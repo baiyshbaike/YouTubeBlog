@@ -74,9 +74,10 @@ namespace Blog.Service.Services.Contrete
                 await _unitOfWork.GetRepository<Image>().AddAsync(image);
                 article.ImageId=image.Id;
             }
-            article.Title = articleUpdateDto.Title;
+            _mapper.Map(articleUpdateDto, article);
+            /*article.Title = articleUpdateDto.Title;
             article.Content = articleUpdateDto.Content;
-            article.CategoryId = articleUpdateDto.CategoryId;
+            article.CategoryId = articleUpdateDto.CategoryId;*/
             article.ModifiedDate = DateTime.Now;
             article.ModifiedBy = userEmail;
             await _unitOfWork.GetRepository<Article>().UpdateAsunc(article);

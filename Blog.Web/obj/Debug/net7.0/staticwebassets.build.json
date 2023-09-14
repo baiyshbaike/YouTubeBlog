@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Lwep6QAQPGGP5QMU2zG4+lTteTcxB89U5vdx9kv9jao=",
+  "Hash": "9xH+9IrTcWo11XZL7EA6w1oTHd2dvTYXzG5o/AY3F7Q=",
   "Source": "Blog.Web",
   "BasePath": "_content/Blog.Web",
   "Mode": "Default",
@@ -304,6 +304,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
+    },
+    {
+      "Identity": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\js\\userindex.js",
+      "SourceId": "Blog.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\",
+      "BasePath": "_content/Blog.Web",
+      "RelativePath": "js/userindex.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\userindex.js"
     },
     {
       "Identity": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
