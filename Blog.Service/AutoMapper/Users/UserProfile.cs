@@ -14,7 +14,9 @@ namespace Blog.Service.AutoMapper.Users
     {
         public UserProfile() 
         {
-            CreateMap<UserDto, AppUser>().ReverseMap();
+            CreateMap<AppUser, UserDto>().ReverseMap();
+            CreateMap<AppUser, UserAddDto>().ReverseMap();
+            CreateMap<AppUser, UserUpdateDto>().ReverseMap();
         }
     }
 }

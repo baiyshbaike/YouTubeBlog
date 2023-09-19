@@ -1,6 +1,23 @@
 # Created by https://www.toptal.com/developers/gitignore/api/dotnetcore,visualstudiocode,visualstudio
 # Edit at https://www.toptal.com/developers/gitignore?templates=dotnetcore,visualstudiocode,visualstudio
+# Bin ve obj klasörlerini ignore et
+**/bin/
+**/obj/
 
+# Derleme sırasında oluşan dosyaları ignore et
+*.dll
+*.pdb
+
+# Visual Studio veya JetBrains Rider için özel ignore'lar
+.vscode/
+.idea/
+
+# Yerel yapılandırmaları ignore et
+appsettings.json
+appsettings.Development.json
+
+# Log dosyalarını ignore et
+*.log
 ### DotnetCore ###
 # .NET Core build folders
 bin/

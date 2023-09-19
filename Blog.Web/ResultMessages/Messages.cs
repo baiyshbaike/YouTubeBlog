@@ -36,4 +36,21 @@ public static class Messages
             return $"{categoryName} The category with the name been deleted successfully";
         }
     }
+    public static class AppUser
+    {
+        public static string Add(string email)
+        {
+            return $"{email} The user with the email has been added successfully";
+        }
+
+        public static string Udpate(string email)
+        {
+            return $"{email} The user with the email been updated successfully";
+        }
+
+        public static string Delete(string email)
+        {
+            return $"{email} The user with the email been deleted successfully";
+        }
+    }
 }
