@@ -1185,11 +1185,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Service\\Blog.Service.csproj",
+      "projectUniqueName": "D:\\Projects\\YouTube\\YoutubeBlog\\Blog.Service\\Blog.Service.csproj",
       "projectName": "Blog.Service",
-      "projectPath": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Service\\Blog.Service.csproj",
+      "projectPath": "D:\\Projects\\YouTube\\YoutubeBlog\\Blog.Service\\Blog.Service.csproj",
       "packagesPath": "C:\\Users\\baiys\\.nuget\\packages\\",
-      "outputPath": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Service\\obj\\",
+      "outputPath": "D:\\Projects\\YouTube\\YoutubeBlog\\Blog.Service\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\DevExpress 23.1\\Components\\Offline Packages"
@@ -1211,8 +1211,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Data\\Blog.Data.csproj": {
-              "projectPath": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Data\\Blog.Data.csproj"
+            "D:\\Projects\\YouTube\\YoutubeBlog\\Blog.Data\\Blog.Data.csproj": {
+              "projectPath": "D:\\Projects\\YouTube\\YoutubeBlog\\Blog.Data\\Blog.Data.csproj"
             }
           }
         }
@@ -1260,7 +1260,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

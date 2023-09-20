@@ -8362,11 +8362,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\Blog.Web.csproj",
+      "projectUniqueName": "D:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\Blog.Web.csproj",
       "projectName": "Blog.Web",
-      "projectPath": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\Blog.Web.csproj",
+      "projectPath": "D:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\Blog.Web.csproj",
       "packagesPath": "C:\\Users\\baiys\\.nuget\\packages\\",
-      "outputPath": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\obj\\",
+      "outputPath": "D:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\DevExpress 23.1\\Components\\Offline Packages"
@@ -8388,11 +8388,11 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Data\\Blog.Data.csproj": {
-              "projectPath": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Data\\Blog.Data.csproj"
+            "D:\\Projects\\YouTube\\YoutubeBlog\\Blog.Data\\Blog.Data.csproj": {
+              "projectPath": "D:\\Projects\\YouTube\\YoutubeBlog\\Blog.Data\\Blog.Data.csproj"
             },
-            "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Service\\Blog.Service.csproj": {
-              "projectPath": "E:\\Projects\\YouTube\\YoutubeBlog\\Blog.Service\\Blog.Service.csproj"
+            "D:\\Projects\\YouTube\\YoutubeBlog\\Blog.Service\\Blog.Service.csproj": {
+              "projectPath": "D:\\Projects\\YouTube\\YoutubeBlog\\Blog.Service\\Blog.Service.csproj"
             }
           }
         }
@@ -8441,7 +8441,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

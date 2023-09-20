@@ -57,7 +57,7 @@ namespace Blog.Web.Areas.Admin.Controllers
                     var findRole = await _roleManager.FindByIdAsync(userAddDto.RoleId.ToString());
                     await _userManager.AddToRoleAsync(map, findRole.ToString());
                     _toastNotification.AddSuccessToastMessage(Messages.AppUser.Add(userAddDto.Email), new ToastrOptions() { Title = "successful!" });
-                    return RedirectToAction("Index", "AppUser", new { Area = "Admin" });
+                    return RedirectToAction("Index", "User", new { Area = "Admin" });
                 }
                 else
                 {
@@ -79,14 +79,57 @@ namespace Blog.Web.Areas.Admin.Controllers
             map.Roles= roles;
             return View(map);
         }
-       /* [HttpPost]
+        [HttpPost]
         public async Task<IActionResult> Update(UserUpdateDto userUpdateDto)
         {
+            var user = await _userManager.FindByIdAsync(userUpdateDto.Id.ToString());
+            if (user != null)
+            {
+                var userRole = string.Join("", await _userManager.GetRolesAsync(user));
+                var roles = await _roleManager.Roles.ToListAsync();
+                if (ModelState.IsValid)
+                {
+                    _mapper.Map(userUpdateDto, user);
+                    user.UserName = userUpdateDto.Email;
+                    user.SecurityStamp = Guid.NewGuid().ToString(); 
+                    var result = await _userManager.UpdateAsync(user);
+                    if (result.Succeeded)
+                    {
+                        await _userManager.RemoveFromRoleAsync(user, userRole);
+                        var findRole = await _roleManager.FindByIdAsync(userUpdateDto.RoleId.ToString());
+                        await _userManager.AddToRoleAsync(user, findRole.Name);
+                        _toastNotification.AddSuccessToastMessage(Messages.AppUser.Update(userUpdateDto.Email), new ToastrOptions() { Title = "successful!" });
+                        return RedirectToAction("Index", "User", new { Area = "Admin" });
+                    }
+                    else
+                    {
+                        foreach (var errors in result.Errors)
+                        {
+                            ModelState.AddModelError("", errors.Description);
+                        }
+                        return View(new UserUpdateDto { Roles = roles });
+                    }
+                }
+            }
+            return NotFound();
+        }
+        public async Task<IActionResult> Delete(Guid userId)
+        {
             var user = await _userManager.FindByIdAsync(userId.ToString());
-            var roles = await _roleManager.Roles.ToListAsync();
-            var map = _mapper.Map<UserUpdateDto>(user);
-            map.Roles = roles;
-            return View(map);
-        }*/
+            var result =  await _userManager.DeleteAsync(user);
+            if (result.Succeeded)
+            {
+                _toastNotification.AddSuccessToastMessage(Messages.AppUser.Delete(user.Email), new ToastrOptions() { Title = "successful!" });
+                return RedirectToAction("Index", "User", new { Area = "Admin" });
+            }
+            else
+            {
+                foreach (var errors in result.Errors)
+                {
+                    ModelState.AddModelError("",errors.Description);
+                }
+            }
+            return NotFound();
+        }
     }
 }

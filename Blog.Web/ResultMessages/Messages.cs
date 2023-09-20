@@ -43,7 +43,7 @@ public static class Messages
             return $"{email} The user with the email has been added successfully";
         }
 
-        public static string Udpate(string email)
+        public static string Update(string email)
         {
             return $"{email} The user with the email been updated successfully";
         }
