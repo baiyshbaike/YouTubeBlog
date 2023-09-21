@@ -1,0 +1,51 @@
+﻿@model List<ArticleDto>
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4">
+        <span class="text-muted fw-light">Bin /</span> Articles
+    </h4>
+    <div class="card">
+        <div class="table-responsive text-nowrap m-5">
+            <table class="table table-bordered" id="articlesTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Creation date</th>
+                        <th>Constituent</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Creation date</th>
+                        <th>Constituent</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </tfoot>
+                <tbody class="table-border-bottom-0">
+                    @foreach (var article in Model)
+                    {
+                        <tr name="@article.Id">
+                            <td>@article.Title</td>
+                            <td>@article.Category.Name</td>
+                            <td>@article.CreatedDate.ToShortDateString()</td>
+                            <td>@article.CreatedBy</td>
+                            <td>@(article.isDeleted ? "Not Active" : "Active")</td>
+                            <td>
+                                <a asp-area="Admin" asp-controller="Article" asp-action="UndoDelete" data-id="@article.Id" asp-route-articleId="@article.Id" class="btn btn-warning btn-sm"><i class="bx bx-undo"></i></a>
+                                @* <a asp-area="Admin" asp-controller="Article" asp-action="Delete" data-id="@article.Id" asp-route-articleId="@article.Id" class="btn btn-danger btn-sm"><i class="bx bx-minus-circle"></i></a> *@
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/js/Articleindex.js" type="application/ecmascript"></script>
+}

@@ -18,6 +18,10 @@ public static class Messages
         {
             return $"{articleTitle} The article with the title has been deleted successfully";
         }
+        public static string UndoDelete(string articleTitle)
+        {
+            return $"{articleTitle} The article with the title has been undodeleted successfully";
+        }
     }
     public static class Category
     {
@@ -34,6 +38,10 @@ public static class Messages
         public static string Delete(string categoryName)
         {
             return $"{categoryName} The category with the name been deleted successfully";
+        }
+        public static string UndoDelete(string categoryName)
+        {
+            return $"{categoryName} The category with the name been undodeleted successfully";
         }
     }
     public static class AppUser

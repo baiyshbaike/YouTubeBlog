@@ -29,9 +29,16 @@ namespace Blog.Web.Areas.Admin.Controllers
             _mapper = mapper;
             _toastNotification = toastNotification;
         }
+        [HttpGet]
         public async  Task<IActionResult> Index()
         {
             var categories = await _categoryService.GetAllCategoriesNonDeleted();
+            return View(categories);
+        }
+        [HttpGet]
+        public async  Task<IActionResult> DeletedCategory()
+        {
+            var categories = await _categoryService.GetAllCategoriesDeleted();
             return View(categories);
         }
         [HttpGet]
@@ -99,6 +106,12 @@ namespace Blog.Web.Areas.Admin.Controllers
         {
             var title = await _categoryService.SafeDeleteCategoryAsync(categoryId);
             _toastNotification.AddSuccessToastMessage(Messages.Article.Delete(title), new ToastrOptions() { Title = "seccessful!" });
+            return RedirectToAction("Index", "Category", new { Area = "Admin" });
+        }
+        public async Task<IActionResult> UndoDelete(Guid categoryId)
+        {
+            var title = await _categoryService.UndoDeleteCategoryAsync(categoryId);
+            _toastNotification.AddSuccessToastMessage(Messages.Article.UndoDelete(title), new ToastrOptions() { Title = "seccessful!" });
             return RedirectToAction("Index", "Category", new { Area = "Admin" });
         }
     }
