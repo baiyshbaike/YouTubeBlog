@@ -14,7 +14,6 @@ namespace Blog.Service.FluentValidations
         {
             RuleFor(x => x.Name)
                 .NotEmpty()
-                .NotNull()
             .MinimumLength(3)
             .MaximumLength(50)
             .WithName("Name");
