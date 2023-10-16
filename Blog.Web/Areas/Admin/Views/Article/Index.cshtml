@@ -1,4 +1,5 @@
-﻿@model List<ArticleDto> 
+﻿@using Blog.Web.Consts;
+@model List<ArticleDto> 
 <div class="container-xxl flex-grow-1 container-p-y">
   <h4 class="fw-bold py-3 mb-4">
     <span class="text-muted fw-light">Activle management /</span> Basic Tables
@@ -6,7 +7,7 @@
   <div class="card">
     <div class="table-responsive text-nowrap m-5">
         @{
-                @if (!User.IsInRole("user"))
+                @if (!User.IsInRole($"{RoleConsts.User}"))
                 {
                     <a class="btn btn-success mb-3" asp-area="Admin" asp-controller="Article" asp-action="Add">
                         Add article <i class="bx bx-plus"></i>
@@ -32,7 +33,7 @@
                         <th>Constituent</th>
                         <th>Status</th>
                         @{
-                            @if (!User.IsInRole("user"))
+                            @if (!User.IsInRole($"{RoleConsts.User}"))
                             {
                                 <th>Actions</th>
                             }
@@ -49,7 +50,7 @@
             <td>@article.CreatedBy</td>
             <td>@(article.isDeleted ? "Not Active" : "Active")</td>
             @{
-                @if (!User.IsInRole("user"))
+                                @if (!User.IsInRole($"{RoleConsts.User}"))
                 {
                     <td>
                     <a asp-area="Admin" asp-controller="Article" asp-action="Update" data-id="@article.Id" asp-route-articleId="@article.Id" class="btn btn-primary btn-sm"><i class="bx bxs-edit"></i></a>
