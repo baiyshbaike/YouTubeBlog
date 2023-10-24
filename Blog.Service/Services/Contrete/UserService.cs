@@ -59,5 +59,30 @@ namespace Blog.Service.Services.Contrete
             }
             return map;
         }
+
+        public async Task<AppUser> GetAppUserByIdAsync(Guid userId)
+        {
+            return await userManager.FindByIdAsync(userId.ToString());
+        }
+
+        public async Task<string> GetUserRoleAsync(AppUser appUser)
+        {
+            return string.Join("", await userManager.GetRolesAsync(appUser));
+        }
+
+        public async Task<IdentityResult> UpdateUserAsync(UserUpdateDto userUpdateDto)
+        {
+            var user = await GetAppUserByIdAsync(userUpdateDto.Id);
+            var userRole = await GetUserRoleAsync(user);
+            var result = await userManager.UpdateAsync(user);
+            if (result.Succeeded)
+            {
+                await userManager.RemoveFromRoleAsync(user, userRole);
+                var findRole = await roleManager.FindByIdAsync(userUpdateDto.RoleId.ToString());
+                await userManager.AddToRoleAsync(user, findRole.Name);
+                return result;
+            }
+            else return result;
+        }
     }
 }

@@ -29,7 +29,7 @@ namespace Blog.Web.Areas.Admin.Controllers
         private readonly IValidator<AppUser> _validator;
         private readonly SignInManager<AppUser> signInManager;
 
-        public UserController(RoleManager<AppRole> roleManager ,UserManager<AppUser> userManager, IMapper mapper ,IUserService userService,IImageHelper imageHelper,IToastNotification toastNotification,IValidator<AppUser> validator,SignInManager<AppUser> signInManager)
+        public UserController(IUnitOfWork unitOfWork , RoleManager<AppRole> roleManager ,UserManager<AppUser> userManager, IMapper mapper ,IUserService userService,IImageHelper imageHelper,IToastNotification toastNotification,IValidator<AppUser> validator,SignInManager<AppUser> signInManager)
         {
             this.roleManager = roleManager;
             this.userManager = userManager;
@@ -78,8 +78,8 @@ namespace Blog.Web.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(Guid userId)
         {
-            var user = await userManager.FindByIdAsync(userId.ToString());
-            var roles = await roleManager.Roles.ToListAsync();
+            var user = await userService.GetAppUserByIdAsync(userId);
+            var roles = await userService.GetAllRolesAsync();
             var map = mapper.Map<UserUpdateDto>(user);
             map.Roles= roles;
             return View(map);
@@ -87,11 +87,10 @@ namespace Blog.Web.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Update(UserUpdateDto userUpdateDto)
         {
-            var user = await userManager.FindByIdAsync(userUpdateDto.Id.ToString());
+            var user = await userService.GetAppUserByIdAsync(userUpdateDto.Id);
             if (user != null)
             {
-                var userRole = string.Join("", await userManager.GetRolesAsync(user));
-                var roles = await roleManager.Roles.ToListAsync();
+                var roles = await userService.GetAllRolesAsync();
                 if (ModelState.IsValid)
                 {
                     var map = mapper.Map(userUpdateDto, user);
@@ -100,12 +99,9 @@ namespace Blog.Web.Areas.Admin.Controllers
                     {
                         user.UserName = userUpdateDto.Email;
                         user.SecurityStamp = Guid.NewGuid().ToString();
-                        var result = await userManager.UpdateAsync(user);
+                        var result = await userService.UpdateUserAsync(userUpdateDto);
                         if (result.Succeeded)
                         {
-                            await userManager.RemoveFromRoleAsync(user, userRole);
-                            var findRole = await roleManager.FindByIdAsync(userUpdateDto.RoleId.ToString());
-                            await userManager.AddToRoleAsync(user, findRole.Name);
                             _toastNotification.AddSuccessToastMessage(Messages.AppUser.Update(userUpdateDto.Email), new ToastrOptions() { Title = "successful!" });
                             return RedirectToAction("Index", "User", new { Area = "Admin" });
                         }
