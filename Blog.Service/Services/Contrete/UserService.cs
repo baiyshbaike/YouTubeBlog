@@ -42,6 +42,17 @@ namespace Blog.Service.Services.Contrete
             else return result;
         }
 
+        public async Task<(IdentityResult idetntityResult, string? email)> DeleteUserAsync(Guid userId)
+        {
+            var user = await GetAppUserByIdAsync(userId);
+            var result = await userManager.DeleteAsync(user);
+            if (result.Succeeded)
+            {
+                return (result, user.Email);
+            }
+            else return (result, null);
+        }
+
         public async Task<List<AppRole>> GetAllRolesAsync()
         {
             return await roleManager.Roles.ToListAsync();

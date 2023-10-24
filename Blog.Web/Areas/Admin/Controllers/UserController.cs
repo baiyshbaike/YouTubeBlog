@@ -122,16 +122,15 @@ namespace Blog.Web.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Delete(Guid userId)
         {
-            var user = await userManager.FindByIdAsync(userId.ToString());
-            var result =  await userManager.DeleteAsync(user);
-            if (result.Succeeded)
+            var result =  await userService.DeleteUserAsync(userId);
+            if (result.idetntityResult.Succeeded)
             {
-                _toastNotification.AddSuccessToastMessage(Messages.AppUser.Delete(user.Email), new ToastrOptions() { Title = "successful!" });
+                _toastNotification.AddSuccessToastMessage(Messages.AppUser.Delete(result.email), new ToastrOptions() { Title = "successful!" });
                 return RedirectToAction("Index", "User", new { Area = "Admin" });
             }
             else
             {
-                result.AddToIdentityModelState(this.ModelState);
+                result.idetntityResult.AddToIdentityModelState(this.ModelState);
             }
             return NotFound();
         }
