@@ -137,66 +137,28 @@ namespace Blog.Web.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Profile()
         {
-            var user = await userManager.GetUserAsync(HttpContext.User);
-            var getImage = await unitOfWork.GetRepository<AppUser>().GetAsync(x => x.Id == user.Id, x => x.Image);
-            var map = mapper.Map<UserProfileDto>(user);
-            map.Image.FileName = getImage.Image.FileName;
-            return View(map);
+            var profile = await userService.GetUserProfileAsync();
+            return View(profile);
         }
         [HttpPost]
         public async Task<IActionResult> Profile(UserProfileDto userProfileDto)
         {
-            var user = await userManager.GetUserAsync(HttpContext.User);
             if(ModelState.IsValid)
             {
-                var isVeriFied = await userManager.CheckPasswordAsync(user, userProfileDto.CurrentPassword);
-                if(isVeriFied && userProfileDto.NewPassword != null && userProfileDto.Photo != null)
+                var result = await userService.UserProfileUpdateAsync(userProfileDto);
+                if (result)
                 {
-                    var result = await userManager.ChangePasswordAsync(user,userProfileDto.CurrentPassword,userProfileDto.NewPassword);
-                    if(result.Succeeded)
-                    {
-                        await userManager.UpdateSecurityStampAsync(user);
-                        await signInManager.SignOutAsync();
-                        await signInManager.PasswordSignInAsync(user, userProfileDto.NewPassword, true, false);
-                        user.FirstName = userProfileDto.FirstName; 
-                        user.LastName = userProfileDto.LastName;
-                        user.PhoneNumber = userProfileDto.PhoneNumber;
-                        var imageUpload = await imageHelper.Upload($"{userProfileDto.FirstName}{userProfileDto.LastName}", userProfileDto.Photo, ImageType.User);
-                        Image image = new(imageUpload.FullName, userProfileDto.Photo.ContentType, userProfileDto.Email);
-                        await unitOfWork.GetRepository<Image>().AddAsync(image);
-                        user.ImageId= image.Id; 
-                        await userManager.UpdateAsync(user);
-                        await unitOfWork.SaveAsync();
-                        _toastNotification.AddSuccessToastMessage("success");
-                        return View();
-                    }
-                    else
-                    {
-                        result.AddToIdentityModelState(ModelState); return View();
-                    }
-                }
-                else if(isVeriFied && userProfileDto.Photo != null)
-                {
-                    await userManager.UpdateSecurityStampAsync(user);
-                    user.FirstName = userProfileDto.FirstName; 
-                    user.LastName = userProfileDto.LastName;
-                    user.PhoneNumber = userProfileDto.PhoneNumber;
-                    var imageUpload = await imageHelper.Upload($"{userProfileDto.FirstName}{userProfileDto.LastName}", userProfileDto.Photo, ImageType.User);
-                    Image image = new(imageUpload.FullName, userProfileDto.Photo.ContentType, userProfileDto.Email);
-                    await unitOfWork.GetRepository<Image>().AddAsync(image);
-                    user.ImageId = image.Id;
-                    await userManager.UpdateAsync(user);
-                    await unitOfWork.SaveAsync();
-                    _toastNotification.AddSuccessToastMessage("success");
-                    return View();
+                    _toastNotification.AddSuccessToastMessage("Profile update process completed", new ToastrOptions() { Title = "success" });
+                    return RedirectToAction("Index", "User", new { Area = "Admin" });
                 }
                 else
                 {
-                    _toastNotification.AddErrorToastMessage("error");
-                    return View();
+                    var profile = await userService.GetUserProfileAsync();
+                    _toastNotification.AddErrorToastMessage("Profile update process not completed", new ToastrOptions() { Title = "error" });
+                    return View(profile);
                 }
             }
-            return View();
+            return NotFound();
         }
     }
 }

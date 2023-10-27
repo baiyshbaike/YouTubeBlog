@@ -53,6 +53,46 @@
       "PackagePath": "staticwebassets\\images\\user-images\\TestTest_122.png"
     },
     {
+      "Id": "D:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\images\\user-images\\TestTest_228.jpg",
+      "PackagePath": "staticwebassets\\images\\user-images\\TestTest_228.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\images\\user-images\\TestTest_364.jpg",
+      "PackagePath": "staticwebassets\\images\\user-images\\TestTest_364.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\images\\user-images\\TestTest_432.jpg",
+      "PackagePath": "staticwebassets\\images\\user-images\\TestTest_432.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\images\\user-images\\TestTest_700.png",
+      "PackagePath": "staticwebassets\\images\\user-images\\TestTest_700.png"
+    },
+    {
+      "Id": "D:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\images\\user-images\\TestTest_907.jpg",
+      "PackagePath": "staticwebassets\\images\\user-images\\TestTest_907.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\images\\user-images\\adminTest_131.png",
+      "PackagePath": "staticwebassets\\images\\user-images\\adminTest_131.png"
+    },
+    {
+      "Id": "D:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\images\\user-images\\adminadmin_13.png",
+      "PackagePath": "staticwebassets\\images\\user-images\\adminadmin_13.png"
+    },
+    {
+      "Id": "D:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\images\\user-images\\adminadmin_454.jpg",
+      "PackagePath": "staticwebassets\\images\\user-images\\adminadmin_454.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\images\\user-images\\adminadmin_59.jpg",
+      "PackagePath": "staticwebassets\\images\\user-images\\adminadmin_59.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\images\\user-images\\adminadmin_893.png",
+      "PackagePath": "staticwebassets\\images\\user-images\\adminadmin_893.png"
+    },
+    {
       "Id": "D:\\Projects\\YouTube\\YoutubeBlog\\Blog.Web\\wwwroot\\js\\articleindex.js",
       "PackagePath": "staticwebassets\\js\\articleindex.js"
     },

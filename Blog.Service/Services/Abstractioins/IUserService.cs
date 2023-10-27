@@ -18,5 +18,7 @@ namespace Blog.Service.Services.Abstractioins
         Task<AppUser> GetAppUserByIdAsync(Guid userId);
         Task<string> GetUserRoleAsync(AppUser appUser);
         Task<(IdentityResult idetntityResult,string? email)> DeleteUserAsync(Guid userId);
+        Task<UserProfileDto> GetUserProfileAsync();
+        Task<bool> UserProfileUpdateAsync(UserProfileDto userProfileDto);
     }
 }
