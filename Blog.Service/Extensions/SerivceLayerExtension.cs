@@ -32,6 +32,7 @@ namespace Blog.Service.Extensions
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IImageHelper, ImagesHelper>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IDashboardService, DashboardService>();
             services.AddAutoMapper(assembly);
             services.AddControllersWithViews().AddFluentValidation(opt =>
             {

@@ -19,27 +19,16 @@ namespace Blog.Web.Areas.Admin.Controllers
     [Area("Admin")]
     public class UserController : Controller
     {
-        private readonly RoleManager<AppRole> roleManager;
-        private readonly UserManager<AppUser> userManager;
         private readonly IMapper mapper;
         private readonly IUserService userService;
-        private readonly IImageHelper imageHelper;
-        private readonly IUnitOfWork unitOfWork;
-        private readonly IToastNotification _toastNotification;
-        private readonly IValidator<AppUser> _validator;
-        private readonly SignInManager<AppUser> signInManager;
-
-        public UserController(IUnitOfWork unitOfWork , RoleManager<AppRole> roleManager ,UserManager<AppUser> userManager, IMapper mapper ,IUserService userService,IImageHelper imageHelper,IToastNotification toastNotification,IValidator<AppUser> validator,SignInManager<AppUser> signInManager)
+        private readonly IToastNotification toastNotification;
+        private readonly IValidator<AppUser> validator;
+        public UserController(IMapper mapper ,IUserService userService,IToastNotification toastNotification,IValidator<AppUser> validator)
         {
-            this.roleManager = roleManager;
-            this.userManager = userManager;
             this.mapper = mapper;
             this.userService = userService;
-            this.imageHelper = imageHelper;
-            this.unitOfWork = unitOfWork;
-            this._toastNotification = toastNotification;
-            this._validator = validator;
-            this.signInManager = signInManager;
+            this.toastNotification = toastNotification;
+            this.validator = validator;
         }
         public async Task<IActionResult> Index()
         {
@@ -57,13 +46,13 @@ namespace Blog.Web.Areas.Admin.Controllers
         {
             var roles = await userService.GetAllRolesAsync();
             var map = mapper.Map<AppUser>(userAddDto);
-            var validation = await _validator.ValidateAsync(map);
+            var validation = await validator.ValidateAsync(map);
             if (ModelState.IsValid)
             {
                 var result = await userService.CreateUserAsync(userAddDto);
                 if (result.Succeeded)
                 {
-                    _toastNotification.AddSuccessToastMessage(Messages.AppUser.Add(userAddDto.Email), new ToastrOptions() { Title = "successful!" });
+                    toastNotification.AddSuccessToastMessage(Messages.AppUser.Add(userAddDto.Email), new ToastrOptions() { Title = "successful!" });
                     return RedirectToAction("Index", "User", new { Area = "Admin" });
                 }
                 else
@@ -94,7 +83,7 @@ namespace Blog.Web.Areas.Admin.Controllers
                 if (ModelState.IsValid)
                 {
                     var map = mapper.Map(userUpdateDto, user);
-                    var validation = _validator.Validate(map);
+                    var validation = validator.Validate(map);
                     if (validation.IsValid) 
                     {
                         user.UserName = userUpdateDto.Email;
@@ -102,7 +91,7 @@ namespace Blog.Web.Areas.Admin.Controllers
                         var result = await userService.UpdateUserAsync(userUpdateDto);
                         if (result.Succeeded)
                         {
-                            _toastNotification.AddSuccessToastMessage(Messages.AppUser.Update(userUpdateDto.Email), new ToastrOptions() { Title = "successful!" });
+                            toastNotification.AddSuccessToastMessage(Messages.AppUser.Update(userUpdateDto.Email), new ToastrOptions() { Title = "successful!" });
                             return RedirectToAction("Index", "User", new { Area = "Admin" });
                         }
                         else
@@ -125,7 +114,7 @@ namespace Blog.Web.Areas.Admin.Controllers
             var result =  await userService.DeleteUserAsync(userId);
             if (result.idetntityResult.Succeeded)
             {
-                _toastNotification.AddSuccessToastMessage(Messages.AppUser.Delete(result.email), new ToastrOptions() { Title = "successful!" });
+                toastNotification.AddSuccessToastMessage(Messages.AppUser.Delete(result.email), new ToastrOptions() { Title = "successful!" });
                 return RedirectToAction("Index", "User", new { Area = "Admin" });
             }
             else
@@ -148,13 +137,13 @@ namespace Blog.Web.Areas.Admin.Controllers
                 var result = await userService.UserProfileUpdateAsync(userProfileDto);
                 if (result)
                 {
-                    _toastNotification.AddSuccessToastMessage("Profile update process completed", new ToastrOptions() { Title = "success" });
+                    toastNotification.AddSuccessToastMessage("Profile update process completed", new ToastrOptions() { Title = "success" });
                     return RedirectToAction("Index", "User", new { Area = "Admin" });
                 }
                 else
                 {
                     var profile = await userService.GetUserProfileAsync();
-                    _toastNotification.AddErrorToastMessage("Profile update process not completed", new ToastrOptions() { Title = "error" });
+                    toastNotification.AddErrorToastMessage("Profile update process not completed", new ToastrOptions() { Title = "error" });
                     return View(profile);
                 }
             }

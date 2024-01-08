@@ -3,6 +3,7 @@ using Blog.Service.Services.Abstractioins;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace Blog.Web.Areas.Admin.Controllers
 {
@@ -11,18 +12,23 @@ namespace Blog.Web.Areas.Admin.Controllers
     public class HomeController : Controller
     {
         private readonly IArticleService _articleService;
-        private readonly UserManager<AppUser> _userManager;
+        private readonly IDashboardService dashboardService;
 
-        public HomeController(IArticleService articleService, UserManager<AppUser> userManager)
+        public HomeController(IArticleService articleService,IDashboardService dashboardService)
         {
             this._articleService = articleService;
-            this._userManager = userManager;
+            this.dashboardService = dashboardService;
         }
         public async Task<ActionResult> Index()
         {
             var articles =  await _articleService.GetAllArticlesWithCategoryNonDeletedAsync();
-            var loggedInUser = await _userManager.GetUserAsync(HttpContext.User);
             return View(articles);
+        }
+        [HttpGet]
+        public async Task<ActionResult> YearlyArticleCounts()
+        {
+            var count = await dashboardService.GetYearlyArtileCount();
+            return Json(JsonConvert.SerializeObject(count));
         }
     }
 }
