@@ -32,5 +32,15 @@ namespace Blog.Service.Services.Contrete
             }
             return datas;
         }
+        public async Task<int> GetTotalArticleCount()
+        {
+            var articleCount = await unitOfWork.GetRepository<Article>().CountAsync();
+            return articleCount;
+        }
+        public async Task<int> GetTotalCategoryCount()
+        {
+            var articleCount = await unitOfWork.GetRepository<Category>().CountAsync();
+            return articleCount;
+        }
     }
 }

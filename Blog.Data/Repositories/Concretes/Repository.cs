@@ -30,7 +30,7 @@ namespace Blog.Data.Repositories.Concretes
 
         public async Task<int> CountAsync(System.Linq.Expressions.Expression<Func<T, bool>> predicate = null)
         {
-            return await Table.CountAsync(predicate);
+            return await Table.CountAsync();
         }
 
         public async Task DeleteAsync(T entity)
